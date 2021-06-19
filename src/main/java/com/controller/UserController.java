@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @Author: wangxm
  * @Date: 2021/6/19 18:43
  */
-@CrossOrigin  //解决跨域
+/*@CrossOrigin  //解决跨域*/
 @RestController
 @RequestMapping(value = "/try")
 @Api(value = "UserController",description = "用户模块(wxm)")
