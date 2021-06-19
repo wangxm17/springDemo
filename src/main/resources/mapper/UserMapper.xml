@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Configuration 3.0//EN" "mybatis-3-mapper.dtd" >
+<mapper namespace="com.dao.UserDao">
+    <resultMap id="UserMap" type="com.domain.User">
+        <result column="username" jdbcType="VARCHAR" property="username" />
+        <result column="password" jdbcType="VARCHAR" property="password" />
+    </resultMap>
+    <select id="getAllUsers" resultMap="UserMap">
+        select * from user
+    </select>
+</mapper>
