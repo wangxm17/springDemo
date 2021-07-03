@@ -1,7 +1,10 @@
 package com.service;
 
+import com.domain.User;
 import com.vo.ResultVo;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 /**
  * @Author: wangxm
@@ -10,6 +13,8 @@ import org.springframework.stereotype.Service;
 @Service
 public interface UserService {
 
-    public ResultVo getAllUsers();
+    ResultVo getAllUsers();
+
+    List<User> page();
 
 }

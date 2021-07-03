@@ -29,4 +29,9 @@ public class UserServiceImpl implements UserService {
             return ResultVo.success(allUsers);
         }
     }
+
+    @Override
+    public List<User> page() {
+        return userDao.getAllUsers();
+    }
 }

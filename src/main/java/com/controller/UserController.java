@@ -2,7 +2,9 @@ package com.controller;
 
 import com.service.UserService;
 import com.vo.ResultVo;
+import com.vo.TableDataInfo;
 import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -24,8 +26,16 @@ public class UserController {
     private UserService userService;
 
     @RequestMapping(value = "/getAll",method = RequestMethod.POST)
+    @ApiOperation(value = "获取用户信息")
     public ResultVo getAllUsers(){
         return userService.getAllUsers();
+    }
+
+    @RequestMapping(value = "/page",method = RequestMethod.POST)
+    @ApiOperation(value = "获取用户信息表格")
+    public TableDataInfo page(){
+        return TableDataInfo.getDataTable(userService.page());
+//        return ResultVo.success(TableDataInfo.getDataTable(userService.page()));
     }
 
 }
