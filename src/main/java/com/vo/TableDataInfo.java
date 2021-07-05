@@ -59,7 +59,7 @@ public class TableDataInfo implements Serializable {
     /**
      * 设置请求分页数据
      */
-    public void startPage(Integer pageNum,Integer pageSize) {
+    public static void startPage(Integer pageNum, Integer pageSize) {
         PageHelper.startPage(pageNum, pageSize);
     }
 

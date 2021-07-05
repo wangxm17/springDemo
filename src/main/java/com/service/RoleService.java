@@ -1,27 +1,26 @@
 package com.service;
 
-import com.domain.Example.UserExample;
-import com.domain.User;
+import com.domain.Example.RoleExample;
+import com.domain.Role;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 /**
  * @Author: wangxm
- * @Date: 2021/6/19 18:37
+ * @Date: 2021/7/4 16:13
  */
 @Service
-public interface UserService {
-
+public interface RoleService {
     /**
      * 分页查询
      */
-    List<User> page(UserExample userExample);
+    List<Role> page(RoleExample roleExample);
 
     /**
      * 新增
      */
-    int insert(User user);
+    int insert(Role role);
 
     /**
      * 删除
@@ -31,11 +30,10 @@ public interface UserService {
     /**
      * 修改
      */
-    int updateByPrimaryKey(User record);
+    int updateByPrimaryKey(Role record);
 
     /**
      * id查询
      */
-    User selectByPrimaryKey(Integer id);
-
+    Role selectByPrimaryKey(Integer id);
 }
