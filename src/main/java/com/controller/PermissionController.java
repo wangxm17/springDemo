@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping(value = "/ Permission")
+@RequestMapping(value = "/Permission")
 @Api(value = "PermissionController",description = "菜单模块(wxm)")
 public class PermissionController {
     @Autowired
@@ -49,5 +49,11 @@ public class PermissionController {
     @ApiOperation(value = "id查询")
     public ResultVo selectByPrimaryKey(@RequestBody Permission permission){
         return ResultVo.success(permissionService.selectByPrimaryKey(permission.getId()));
+    }
+
+    @RequestMapping(value = "/getPermissionTree",method = RequestMethod.POST)
+    @ApiOperation(value = "获取菜单树")
+    public ResultVo getPermissionTree(){
+        return ResultVo.success(permissionService.getPermissionTree());
     }
 }

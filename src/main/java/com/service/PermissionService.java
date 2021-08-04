@@ -37,5 +37,5 @@ public interface PermissionService {
     /**
      * 获取菜单树
      */
-    Map<String,Object> getPermissionTree(Integer id);
+    List<Permission> getPermissionTree();
 }

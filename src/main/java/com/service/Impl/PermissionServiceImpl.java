@@ -49,9 +49,34 @@ public class PermissionServiceImpl implements PermissionService {
     }
 
     @Override
-    public Map<String, Object> getPermissionTree(Integer id) {
-        return null;
+    public List<Permission> getPermissionTree() {
+        List<Permission> menuList = new ArrayList<Permission>(); //树集合
+        List<Permission> menuAll = permissionMapper.selectFirstMenu(); //一级菜单
+        for (Permission permission : menuAll) {
+            List<Permission> ChildrenList = getChildrens(permission.getId());
+            if(ChildrenList.size()>0){
+                permission.setChildMenus(ChildrenList);
+            }
+            menuList.add(permission);
+        }
+        return menuList;
     }
 
+    /**
+     * 递归查询下级菜单
+     */
+    public List<Permission> getChildrens(Integer fatherId) {
+        List<Permission> menuList = new ArrayList<Permission>(); //集合
+        List<Permission> menuAll = permissionMapper.selectByFatherId(fatherId); //子集合
+        for (Permission permission : menuAll) {
+            System.out.println(permission);
+            List<Permission> ChildrenList = getChildrens(permission.getId());
+            if(ChildrenList.size()>0){
+                permission.setChildMenus(ChildrenList);
+            }
+            menuList.add(permission);
+        }
+        return menuList;
+    }
 
 }
