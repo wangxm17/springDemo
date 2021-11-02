@@ -38,4 +38,9 @@ public interface PermissionService {
      * 获取菜单树
      */
     List<Permission> getPermissionTree();
+
+    /**
+     * 路由
+     */
+    List getRouter();
 }

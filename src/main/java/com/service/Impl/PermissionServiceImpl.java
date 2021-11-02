@@ -11,10 +11,7 @@ import com.service.PermissionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Service
 public class PermissionServiceImpl implements PermissionService {
@@ -47,6 +44,47 @@ public class PermissionServiceImpl implements PermissionService {
     public Permission selectByPrimaryKey(Integer id) {
         return permissionMapper.selectByPrimaryKey(id);
     }
+
+    @Override
+    public List getRouter() {
+        List  menuList = new ArrayList<>(); //树集合
+        List<Permission> menuAll = permissionMapper.selectFirstMenu(); //一级菜单
+        for (Permission permission : menuAll) {
+            List ChildrenList = getchildMenus(permission.getId());
+            Map map = new HashMap();
+            map.put("path", permission.getPath());
+            map.put("name", permission.getName());
+            map.put("component", permission.getUrl());
+            if(ChildrenList.size()>0){
+                map.put("children", ChildrenList);
+            }
+            menuList.add(map);
+        }
+        return menuList;
+    }
+
+    /**
+     * 递归查询下级路由
+     */
+    public List getchildMenus(Integer fatherId) {
+        List menuList = new ArrayList<>(); //集合
+        List<Permission> menuAll = permissionMapper.selectByFatherId(fatherId); //子集合
+        for (Permission permission : menuAll) {
+            System.out.println(permission);
+            List<Permission> ChildrenList = getchildMenus(permission.getId());
+            Map map = new HashMap();
+            map.put("path", permission.getPath());
+            map.put("name", permission.getName());
+            map.put("component", permission.getUrl());
+            if(ChildrenList.size()>0){
+                map.put("children", ChildrenList);
+            }
+            menuList.add(map);
+        }
+        return menuList;
+    }
+
+
 
     @Override
     public List<Permission> getPermissionTree() {

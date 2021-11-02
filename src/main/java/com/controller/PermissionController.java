@@ -13,6 +13,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @RestController
 @RequestMapping(value = "/Permission")
 @Api(value = "PermissionController",description = "菜单模块(wxm)")
@@ -55,5 +58,11 @@ public class PermissionController {
     @ApiOperation(value = "获取菜单树")
     public ResultVo getPermissionTree(){
         return ResultVo.success(permissionService.getPermissionTree());
+    }
+
+    @RequestMapping(value = "/getRouter",method = RequestMethod.POST)
+    @ApiOperation(value = "获取路由")
+    public ResultVo getRouter(){
+        return ResultVo.success(permissionService.getRouter());
     }
 }
