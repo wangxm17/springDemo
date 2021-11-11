@@ -12,17 +12,22 @@ public interface PermissionService {
     /**
      * 分页查询
      */
-    List<Permission> page(PermissionExample permissionExample);
+    List<Permission> page(PermissionExample example);
+
+    /**
+     * 父级字典
+     */
+    List fatherDict();
 
     /**
      * 新增
      */
-    int insert(Permission permission);
+    int insert(Permission record);
 
     /**
      * 删除
      */
-    int deleteByPrimaryKey(Integer id);
+    int deleteByPrimaryKey(String id);
 
     /**
      * 修改
@@ -32,7 +37,7 @@ public interface PermissionService {
     /**
      * id查询
      */
-    Permission selectByPrimaryKey(Integer id);
+    Permission selectByPrimaryKey(String id);
 
     /**
      * 获取菜单树

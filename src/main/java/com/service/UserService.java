@@ -16,17 +16,17 @@ public interface UserService {
     /**
      * 分页查询
      */
-    List<User> page(UserExample userExample);
+    List<User> page(UserExample example);
 
     /**
      * 新增
      */
-    int insert(User user);
+    int insert(User record);
 
     /**
      * 删除
      */
-    int deleteByPrimaryKey(Integer id);
+    int deleteByPrimaryKey(String id);
 
     /**
      * 修改
@@ -36,6 +36,6 @@ public interface UserService {
     /**
      * id查询
      */
-    User selectByPrimaryKey(Integer id);
+    User selectByPrimaryKey(String id);
 
 }

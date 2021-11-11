@@ -1,12 +1,10 @@
 package com.service.Impl;
 
 import com.dao.PermissionMapper;
-import com.dao.UserMapper;
 import com.domain.Example.PermissionExample;
-import com.domain.Example.UserExample;
+import com.domain.Example.RoleExample;
 import com.domain.Permission;
-import com.domain.PermissionTree;
-import com.domain.User;
+import com.domain.Role;
 import com.service.PermissionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,18 +17,36 @@ public class PermissionServiceImpl implements PermissionService {
     PermissionMapper permissionMapper;
 
     @Override
-    public List<Permission> page(PermissionExample permissionExample) {
-        return permissionMapper.selectByExample(permissionExample);
+    public List<Permission> page(PermissionExample example) {
+        return permissionMapper.selectByExample(example);
     }
 
     @Override
-    public int insert(Permission permission) {
-        permission.setCreateTime(new Date());
-        return permissionMapper.insert(permission);
+    public List fatherDict() {
+        List fatherList = new ArrayList();
+        List<Permission> menuAll = permissionMapper.selectFirstMenu(); //一级菜单
+        for (Permission permission:menuAll){
+            Map<String,Object> map = new HashMap<>();
+            map.put("id",permission.getId());
+            map.put("fatherName",permission.getName());
+            fatherList.add(map);
+        }
+        Map<String,Object> map = new HashMap<>();
+        map.put("id","'0");
+        map.put("fatherName","(无)");
+        fatherList.add(map);
+        return fatherList;
     }
 
     @Override
-    public int deleteByPrimaryKey(Integer id) {
+    public int insert(Permission record) {
+        record.setCreateTime(new Date());
+        record.setId(UUID.randomUUID().toString());
+        return permissionMapper.insert(record);
+    }
+
+    @Override
+    public int deleteByPrimaryKey(String id) {
         return permissionMapper.deleteByPrimaryKey(id);
     }
 
@@ -41,7 +57,7 @@ public class PermissionServiceImpl implements PermissionService {
     }
 
     @Override
-    public Permission selectByPrimaryKey(Integer id) {
+    public Permission selectByPrimaryKey(String id) {
         return permissionMapper.selectByPrimaryKey(id);
     }
 
@@ -66,7 +82,7 @@ public class PermissionServiceImpl implements PermissionService {
     /**
      * 递归查询下级路由
      */
-    public List getchildMenus(Integer fatherId) {
+    public List getchildMenus(String fatherId) {
         List menuList = new ArrayList<>(); //集合
         List<Permission> menuAll = permissionMapper.selectByFatherId(fatherId); //子集合
         for (Permission permission : menuAll) {
@@ -103,7 +119,7 @@ public class PermissionServiceImpl implements PermissionService {
     /**
      * 递归查询下级菜单
      */
-    public List<Permission> getChildrens(Integer fatherId) {
+    public List<Permission> getChildrens(String fatherId) {
         List<Permission> menuList = new ArrayList<Permission>(); //集合
         List<Permission> menuAll = permissionMapper.selectByFatherId(fatherId); //子集合
         for (Permission permission : menuAll) {

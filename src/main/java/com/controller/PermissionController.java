@@ -13,9 +13,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.ArrayList;
-import java.util.List;
-
 @RestController
 @RequestMapping(value = "/Permission")
 @Api(value = "PermissionController",description = "菜单模块(wxm)")
@@ -28,6 +25,13 @@ public class PermissionController {
     public TableDataInfo page(@RequestBody PermissionExample permissionExample){
         TableDataInfo.startPage(permissionExample.getPageNum(), permissionExample.getPageSize());
         return TableDataInfo.getDataTable(permissionService.page(permissionExample));
+    }
+
+    @RequestMapping(value = "/pageTwo",method = RequestMethod.POST)
+    @ApiOperation(value = "分页查询")
+    public TableDataInfo pageTwo(@RequestBody PermissionExample permissionExample){
+        TableDataInfo.startPage(permissionExample.getPageNum(), permissionExample.getPageSize());
+        return TableDataInfo.getDataTable(permissionService.getPermissionTree());
     }
 
     @RequestMapping(value = "/insert",method = RequestMethod.POST)

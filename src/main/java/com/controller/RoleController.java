@@ -31,6 +31,12 @@ public class RoleController {
         return TableDataInfo.getDataTable(roleService.page(roleExample));
     }
 
+    @RequestMapping(value = "/roleDict",method = RequestMethod.POST)
+    @ApiOperation(value = "角色字典")
+    public ResultVo roleDict(){
+        return ResultVo.success(roleService.roleDict());
+    }
+
     @RequestMapping(value = "/insert",method = RequestMethod.POST)
     @ApiOperation(value = "新增")
     public ResultVo<Integer> insert(@RequestBody Role role){

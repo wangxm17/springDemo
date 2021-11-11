@@ -7,8 +7,7 @@ import com.service.RoleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 /**
  * @Author: wangxm
@@ -20,18 +19,33 @@ public class RoleServiceImpl implements RoleService {
     RoleMapper roleMapper;
 
     @Override
-    public List<Role> page(RoleExample roleExample) {
-        return roleMapper.selectByExample(roleExample);
+    public List<Role> page(RoleExample example) {
+        return roleMapper.selectByExample(example);
     }
 
     @Override
-    public int insert(Role role) {
-        role.setCreateTime(new Date());
-        return roleMapper.insert(role);
+    public List roleDict() {
+        List roleList = new ArrayList();
+        RoleExample example = new RoleExample();
+        List<Role> roleAll = roleMapper.selectByExample(example);
+        for (Role role:roleAll){
+            Map<String,Object> map = new HashMap<>();
+            map.put("id",role.getId());
+            map.put("roleName",role.getRoleName());
+            roleList.add(map);
+        }
+        return roleList;
     }
 
     @Override
-    public int deleteByPrimaryKey(Integer id) {
+    public int insert(Role record) {
+        record.setCreateTime(new Date());
+        record.setId(UUID.randomUUID().toString());
+        return roleMapper.insert(record);
+    }
+
+    @Override
+    public int deleteByPrimaryKey(String id) {
         return roleMapper.deleteByPrimaryKey(id);
     }
 
@@ -42,7 +56,7 @@ public class RoleServiceImpl implements RoleService {
     }
 
     @Override
-    public Role selectByPrimaryKey(Integer id) {
+    public Role selectByPrimaryKey(String id) {
         return roleMapper.selectByPrimaryKey(id);
     }
 }
