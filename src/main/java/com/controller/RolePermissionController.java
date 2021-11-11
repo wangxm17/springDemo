@@ -66,7 +66,7 @@ public class RolePermissionController {
 
     @RequestMapping(value = "/editByRid",method = RequestMethod.POST)
     @ApiOperation(value = "根据rid权限配置")
-    public ResultVo editByRid(@RequestParam String rid , List<String> allPid){
+    public ResultVo editByRid(@RequestParam String rid , @RequestParam List<String> allPid){
         return ResultVo.success(rolePermissionService.editByRid(rid,allPid));
     }
 }
