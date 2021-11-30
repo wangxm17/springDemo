@@ -13,6 +13,8 @@ public class CodeMsg {
     public static CodeMsg INSERT_ERROR = new CodeMsg(100001,"插入失败");
     public static CodeMsg SELECT_ERROR = new CodeMsg(100002,"查询失败");
     public static CodeMsg UPDATE_ERROR = new CodeMsg(100003,"更新失败");
+    public static CodeMsg CODE_ERROR = new CodeMsg(100004,"验证码不一致");
+    public static CodeMsg USER_ERROR = new CodeMsg(100005,"用户不存在");
 
     public CodeMsg(int code, String msg) {
         this.code = code;

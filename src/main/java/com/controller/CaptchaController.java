@@ -1,5 +1,7 @@
 package com.controller;
 
+import com.tools.CacheUtils;
+import com.tools.UserUtils;
 import com.tools.VerifyCode;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -33,13 +35,18 @@ public class CaptchaController {
             BufferedImage verifyImg=new BufferedImage(width,height,BufferedImage.TYPE_INT_RGB);
             //生成对应宽高的初始图片
             String randomText = VerifyCode.drawRandomText(width,height,verifyImg);
+            //缓存验证码
+            CacheUtils.putCache(CacheUtils.CODE_KEY,randomText,request);
+//            String code = (String) CacheUtils.getCache(CacheUtils.CODE_KEY,request);
             //单独的一个类方法，出于代码复用考虑，进行了封装。// 功能是生成验证码字符并加上噪点，干扰线，返回值为验证码字符
-            request.getSession().setAttribute("verifyCode", randomText);
+//            request.getSession().setAttribute("verifyCode", randomText);
+//            String code = (String) request.getSession().getAttribute("verifyCode");
             response.setContentType("image/png");//必须设置响应内容类型为图片，否则前台不识别
             OutputStream os = response.getOutputStream(); //获取文件输出流
             ImageIO.write(verifyImg,"png",os);//输出图片流
             os.flush();
             os.close();//关闭流
+
         } catch (IOException e) {
             e.printStackTrace();
         }

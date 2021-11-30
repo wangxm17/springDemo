@@ -8,6 +8,7 @@ public class UserExample {
     private int pageNum;// 当前页
     private int pageSize;// 每页条数 每页的数量
     private String userName;
+    private String password;
 
     public int getPageNum() {
         return pageNum;
@@ -31,6 +32,14 @@ public class UserExample {
 
     public void setUserName(String userName) {
         this.userName = userName;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     /**

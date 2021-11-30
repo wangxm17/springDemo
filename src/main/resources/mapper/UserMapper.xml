@@ -101,6 +101,10 @@
     <if test="userName != null and userName != ''">
       AND user.user_name LIKE "%"#{userName}"%"
     </if>
+    <!-- 密码 -->
+    <if test="password != null and password != ''">
+      AND user.password LIKE "%"#{password}"%"
+    </if>
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
