@@ -103,7 +103,7 @@
     </if>
     <!-- 密码 -->
     <if test="password != null and password != ''">
-      AND user.password LIKE "%"#{password}"%"
+      AND user.password = #{password}
     </if>
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
