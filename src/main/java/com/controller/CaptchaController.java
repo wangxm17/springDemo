@@ -1,7 +1,6 @@
 package com.controller;
 
 import com.tools.CacheUtils;
-import com.tools.UserUtils;
 import com.tools.VerifyCode;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;

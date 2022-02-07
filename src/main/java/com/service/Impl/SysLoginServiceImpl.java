@@ -32,7 +32,7 @@ public class SysLoginServiceImpl implements SysLoginService {
             return ResultVo.error(CodeMsg.CODE_ERROR);
         }
         // 用户验证
-        if (!validateUser(username,password))
+        if (!validateUser(username,password,request))
         {
             return ResultVo.error(CodeMsg.USER_ERROR);
         }
@@ -66,14 +66,14 @@ public class SysLoginServiceImpl implements SysLoginService {
      * @param password 密码
      * @return
      */
-    public boolean validateUser(String username, String password)
+    public boolean validateUser(String username, String password, HttpServletRequest request)
     {
         UserExample example = new UserExample();
         example.setUserName(username);
         example.setPassword(password);
         List<User> users = userMapper.selectByExample(example);
-        if (users.size()>0)
-        {
+        if (users.size()>0) {
+//            CacheUtils.putCache(CacheUtils.LoginUser,users.get(0),request);//放置用户缓存
             return true;
         }
         return false;
