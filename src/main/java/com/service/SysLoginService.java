@@ -4,6 +4,7 @@ import com.vo.ResultVo;
 import org.springframework.stereotype.Service;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.HashMap;
 
 /**
  * @Author: wangxm
@@ -14,4 +15,7 @@ public interface SysLoginService {
 
     ResultVo<Object> login(String username, String password, String code, HttpServletRequest request);
 
+    HashMap getUserInfo(HttpServletRequest request);
+
+    ResultVo<Object> loginOut(HttpServletRequest request);
 }

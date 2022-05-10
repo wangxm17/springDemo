@@ -17,7 +17,7 @@ public class CacheUtils {
     /**
      * 用户 code key
      */
-    public static final String LoginUser = null;
+    public static final String LoginUserId = "";
 
     public static void putCache(String key, Object value, HttpServletRequest request){
         request.getSession().setAttribute(key, value);

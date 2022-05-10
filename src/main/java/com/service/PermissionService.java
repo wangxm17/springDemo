@@ -40,7 +40,7 @@ public interface PermissionService {
     Permission selectByPrimaryKey(String id);
 
     /**
-     * 获取菜单树
+     * 获取菜单树(全部)
      */
     List<Permission> getPermissionTree();
 
