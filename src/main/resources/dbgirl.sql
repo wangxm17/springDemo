@@ -11,7 +11,7 @@
  Target Server Version : 80018
  File Encoding         : 65001
 
- Date: 15/04/2022 15:33:40
+ Date: 12/05/2022 08:53:52
 */
 
 SET NAMES utf8mb4;
@@ -41,10 +41,11 @@ CREATE TABLE `permission`  (
 INSERT INTO `permission` VALUES ('1', '一级无子菜单', 'el-icon-location', 'One', '@/components/Layouts', '0', '2021-10-29 17:13:40', '2021-10-29 17:13:40', '1', '1');
 INSERT INTO `permission` VALUES ('2', '首页', 'el-icon-s-home', 'shouye', '@/views/shouye/index', '1', '2021-10-29 17:13:40', '2021-11-11 14:04:26', '1', '1');
 INSERT INTO `permission` VALUES ('3', '系统管理', 'el-icon-s-tools', 'index', '@/components/Layouts', '0', '2021-10-29 17:13:40', '2021-11-11 07:35:00', '1', '1');
-INSERT INTO `permission` VALUES ('4', 'HelloWorld', 'el-icon-phone', 'home', '@/components/HelloWorld', '3', '2021-10-29 17:13:40', '2021-11-11 14:03:37', '1', '1');
+INSERT INTO `permission` VALUES ('368a69d8-81cd-4326-aec3-a305b7ae1594', '文件导出', 'el-icon-s-order', 'fileChoose', '@/views/fileExport/fileChoose', '3', '2022-05-06 07:54:42', '2022-05-06 09:20:04', NULL, NULL);
+INSERT INTO `permission` VALUES ('4', '网页模板', 'el-icon-document-copy', 'home', '@/components/HelloWorld', '3', '2021-10-29 17:13:40', '2022-05-10 07:00:27', '1', '1');
 INSERT INTO `permission` VALUES ('5', '用户管理', 'el-icon-user-solid', 'user', '@/views/User/userTable', '3', '2021-10-29 17:13:40', '2021-11-19 05:37:37', '1', '1');
 INSERT INTO `permission` VALUES ('6', '角色管理', 'el-icon-s-fold', 'role', '@/views/Role/roleTable', '3', '2021-10-29 17:13:40', '2021-11-19 05:37:47', '1', '1');
-INSERT INTO `permission` VALUES ('69176a8d-28fd-4227-ac2c-c4ea9890e447', 'HelloWorldOne', 'el-icon-folder-checked', 'homeOne', '@/components/HelloWorldOne', '3', '2021-12-09 05:42:16', '2021-12-09 05:43:13', NULL, NULL);
+INSERT INTO `permission` VALUES ('69176a8d-28fd-4227-ac2c-c4ea9890e447', '我的文件', 'el-icon-s-cooperation', 'fileMsg', '@/views/FileMsg/fileMsg', '3', '2021-12-09 05:42:16', '2022-04-21 01:04:17', NULL, NULL);
 INSERT INTO `permission` VALUES ('7', '菜单管理', 'el-icon-tickets', 'menu', '@/views/Menu/menuTable', '3', '2021-11-11 09:58:39', '2021-11-19 05:37:55', '1', '1');
 INSERT INTO `permission` VALUES ('8', '地图', 'el-icon-thumb', 'map', '@/views/map/map', '3', '2021-11-11 16:25:20', '2021-11-11 14:03:19', '1', '1');
 
@@ -81,18 +82,23 @@ CREATE TABLE `role_permission`  (
 -- ----------------------------
 -- Records of role_permission
 -- ----------------------------
-INSERT INTO `role_permission` VALUES ('56d21116-6554-4797-ab3c-e7f25ee4b1e3', '227e6710-1666-4c90-9303-e5a0a0c7548e', '1');
-INSERT INTO `role_permission` VALUES ('75bbd338-901e-48b7-bdae-8f1dd143b00c', '227e6710-1666-4c90-9303-e5a0a0c7548e', '5');
-INSERT INTO `role_permission` VALUES ('7bde600c-487e-4b27-8029-f455a26b8844', '1', '1');
-INSERT INTO `role_permission` VALUES ('7c4c1f49-f648-458e-b1c7-b9cebc4b5d2f', '1', '5');
-INSERT INTO `role_permission` VALUES ('808867bc-6213-4813-be76-e11875af301b', '1', '4');
-INSERT INTO `role_permission` VALUES ('9ab788a6-1b46-4749-afb5-1e3b4656479d', '227e6710-1666-4c90-9303-e5a0a0c7548e', '7');
-INSERT INTO `role_permission` VALUES ('acf4dccf-b054-4dac-9a31-1f530868f93e', '227e6710-1666-4c90-9303-e5a0a0c7548e', '6');
-INSERT INTO `role_permission` VALUES ('d3e7eab7-a38f-4554-8432-d2aa47110779', '227e6710-1666-4c90-9303-e5a0a0c7548e', '8');
-INSERT INTO `role_permission` VALUES ('d4849a26-b609-47fd-8990-bf5f81160e8d', '227e6710-1666-4c90-9303-e5a0a0c7548e', '4');
-INSERT INTO `role_permission` VALUES ('dae76a2c-4527-4534-ae33-a283d9875721', '227e6710-1666-4c90-9303-e5a0a0c7548e', '2');
-INSERT INTO `role_permission` VALUES ('e81cefde-5d78-4c40-80c0-adaa48bdae98', '227e6710-1666-4c90-9303-e5a0a0c7548e', '3');
-INSERT INTO `role_permission` VALUES ('fa17870f-4916-46b9-b981-c5bf80156b8a', '1', '2');
+INSERT INTO `role_permission` VALUES ('0de5f5c7-e9e0-4cbe-9759-55aef86a3af4', '227e6710-1666-4c90-9303-e5a0a0c7548e', '4');
+INSERT INTO `role_permission` VALUES ('1d746c06-68f6-457f-a9bf-61bc74859fa7', '227e6710-1666-4c90-9303-e5a0a0c7548e', '7');
+INSERT INTO `role_permission` VALUES ('33681954-224e-4247-af47-b68bf0935754', '1', '8');
+INSERT INTO `role_permission` VALUES ('4e4c6166-4374-4341-822d-c7ef4f6105fe', '227e6710-1666-4c90-9303-e5a0a0c7548e', '5');
+INSERT INTO `role_permission` VALUES ('5816ffd3-4412-4d61-be03-93aa8d62bb23', '1', '368a69d8-81cd-4326-aec3-a305b7ae1594');
+INSERT INTO `role_permission` VALUES ('5da74092-7746-43d2-b58b-987888422126', '1', '2');
+INSERT INTO `role_permission` VALUES ('655778d7-baab-48c6-bf11-34b65b136e7e', '227e6710-1666-4c90-9303-e5a0a0c7548e', '6');
+INSERT INTO `role_permission` VALUES ('6c3c2357-28d8-4cf7-a811-59ae9b1e820b', '1', '3');
+INSERT INTO `role_permission` VALUES ('8ef002d4-a2f4-4528-95df-9158d5e8c178', '227e6710-1666-4c90-9303-e5a0a0c7548e', '8');
+INSERT INTO `role_permission` VALUES ('9303794a-1ee0-4ffb-8988-01d8f7539058', '1', '4');
+INSERT INTO `role_permission` VALUES ('a7220fe0-d8d3-4a36-ab2b-e625a6619726', '227e6710-1666-4c90-9303-e5a0a0c7548e', '2');
+INSERT INTO `role_permission` VALUES ('a7cb86c9-be1e-4ba6-b01d-4cde9d9ff972', '1', '69176a8d-28fd-4227-ac2c-c4ea9890e447');
+INSERT INTO `role_permission` VALUES ('becaf494-1479-45f6-b19b-a918f4747ca4', '227e6710-1666-4c90-9303-e5a0a0c7548e', '3');
+INSERT INTO `role_permission` VALUES ('c28b1e8c-6704-43fc-8988-84d04919ae78', '227e6710-1666-4c90-9303-e5a0a0c7548e', '368a69d8-81cd-4326-aec3-a305b7ae1594');
+INSERT INTO `role_permission` VALUES ('c5002c56-995e-46a9-b4e9-b415f26895a7', '227e6710-1666-4c90-9303-e5a0a0c7548e', '1');
+INSERT INTO `role_permission` VALUES ('d3fa2239-e597-46bb-ac0a-e175f059523f', '1', '1');
+INSERT INTO `role_permission` VALUES ('f9c6cabc-efd5-4bb9-a0cd-e55368e33bef', '227e6710-1666-4c90-9303-e5a0a0c7548e', '69176a8d-28fd-4227-ac2c-c4ea9890e447');
 
 -- ----------------------------
 -- Table structure for user
@@ -113,8 +119,8 @@ CREATE TABLE `user`  (
 -- Records of user
 -- ----------------------------
 INSERT INTO `user` VALUES ('1', 'zhangsan', '1', '2021-08-03 17:10:50', '2021-11-10 09:15:08', NULL, NULL);
-INSERT INTO `user` VALUES ('2', '6364', '6433', '2021-08-02 05:58:56', '2021-11-10 08:22:33', NULL, NULL);
-INSERT INTO `user` VALUES ('3', 'admin', 'admin', '2021-08-02 06:44:08', NULL, NULL, NULL);
+INSERT INTO `user` VALUES ('2', 'ceshi', 'ceshi', '2021-08-02 05:58:56', '2022-05-10 07:21:52', NULL, NULL);
+INSERT INTO `user` VALUES ('3', 'admin', 'admin', '2021-08-02 06:44:08', '2022-05-10 02:46:37', NULL, NULL);
 INSERT INTO `user` VALUES ('4', '32', '3213', '2021-10-29 01:45:39', NULL, NULL, NULL);
 
 -- ----------------------------
@@ -131,10 +137,11 @@ CREATE TABLE `user_role`  (
 -- ----------------------------
 -- Records of user_role
 -- ----------------------------
-INSERT INTO `user_role` VALUES ('2', '2', '1');
-INSERT INTO `user_role` VALUES ('3', '3', '1');
+INSERT INTO `user_role` VALUES ('3dcadb60-25ad-453c-96c5-0a2b3acb62c5', '3', '227e6710-1666-4c90-9303-e5a0a0c7548e');
+INSERT INTO `user_role` VALUES ('3dcd3cd7-3126-420d-903b-c1bd5a99fc38', '3', '1');
 INSERT INTO `user_role` VALUES ('4', '4', '1');
 INSERT INTO `user_role` VALUES ('55fff5b2-7389-462b-9db4-6e643e4cc2fd', '1', '227e6710-1666-4c90-9303-e5a0a0c7548e');
 INSERT INTO `user_role` VALUES ('62a60335-0ed9-49df-bc50-b6daaeb6c5f1', '1', '1');
+INSERT INTO `user_role` VALUES ('b74cf6f0-caa8-4362-95c7-4b16b84e40d1', '2', '1');
 
 SET FOREIGN_KEY_CHECKS = 1;

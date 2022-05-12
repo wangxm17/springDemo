@@ -120,13 +120,13 @@
     select
     <include refid="Base_Column_List" />
     from permission
-    where fatherid = #{fatherId}
+    where fatherid = #{fatherId} order by create_time asc
   </select>
   <select id="selectFirstMenu" resultMap="BaseResultMap">
     select
     <include refid="Base_Column_List" />
     from permission
-    where fatherid = '0'
+    where fatherid = '0' order by create_time asc
   </select>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
     <!--
